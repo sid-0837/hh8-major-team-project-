@@ -1,14 +1,13 @@
-def calculate_risk(status, failure_count, anomaly=False):
+def calculate_risk(status, failure_count, anomaly):
 
-    risk_score = 0
+    score = 0
 
     if status == "Failed":
-        risk_score += 20
+        score += 30
 
-    if failure_count >= 5:
-        risk_score += 30
+    score += failure_count * 10
 
     if anomaly:
-        risk_score += 25
+        score += 40
 
-    return risk_score
+    return min(score, 100)
